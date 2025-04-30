@@ -113,7 +113,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
             ),
-            pref.getInt("food") != 0
+            (pref.getInt("food") ?? 0) != 0
                 ? Container()
                 : Positioned(
                     bottom: 20,

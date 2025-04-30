@@ -5,6 +5,7 @@ import 'package:flutter_restaurant_app/common/components/custom_text_filed.dart'
 import 'package:flutter_restaurant_app/common/helpers/export.dart';
 import 'package:flutter_restaurant_app/common/helpers/status.dart';
 import 'package:flutter_restaurant_app/common/helpers/translate.dart';
+import 'package:flutter_restaurant_app/main.dart';
 import 'package:flutter_restaurant_app/view/auth/login_screen.dart';
 import 'package:flutter_restaurant_app/view/bnb/bnb.dart';
 import 'package:flutter_svg/svg.dart';
@@ -95,6 +96,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 16.o.gapY,
                 CustomButton(
                   onTap: () {
+                    pref.setBool("is_loged_in", true);
                     pushToUntil(Bnb(), context);
                   },
                   status: CustomButtonStatus.ELEVETED,

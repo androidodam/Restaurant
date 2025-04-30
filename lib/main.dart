@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_restaurant_app/common/helpers/export.dart';
 import 'package:flutter_restaurant_app/common/helpers/keys.dart';
 import 'package:flutter_restaurant_app/view/auth/start_screen.dart';
+import 'package:flutter_restaurant_app/view/bnb/bnb.dart';
 import 'package:flutter_restaurant_app/view_model/theme_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_translate/flutter_translate.dart';
@@ -19,12 +20,18 @@ void main(List<String> args) async {
   var delegate = await LocalizationDelegate.create(
       fallbackLocale: pref.getString("language") ?? "uz",
       supportedLocales: ["uz", "ru", "en"]);
+
+  bool isLogedIn = pref.getBool("is_loged_in") ?? false;
+
+  Widget initialPage = isLogedIn ? Bnb() : StartScreen();
+
   themeNotifier.init();
-  runApp(LocalizedApp(delegate, ProviderScope(child: MyApp())));
+  runApp(LocalizedApp(delegate, ProviderScope(child: MyApp(initialPage))));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Widget initialPage;
+  const MyApp(this.initialPage, {super.key, required});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +55,7 @@ class MyApp extends StatelessWidget {
             darkTheme: theme.dark,
             themeMode: notifier.themeMode,
             debugShowCheckedModeBanner: false,
-            home: StartScreen(),
+            home: initialPage,
           );
         },
       ),

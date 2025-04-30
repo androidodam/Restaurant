@@ -92,11 +92,11 @@ class _CartScreenState extends State<CartScreen> {
                                     width: 64.w,
                                     height: 64.h,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Image.asset(
-                                      foodList[index].image,
-                                      fit: BoxFit.cover,
+                                      borderRadius: BorderRadius.circular(10.o),
+                                      image: DecorationImage(
+                                          image:
+                                              AssetImage(foodList[index].image),
+                                          fit: BoxFit.cover),
                                     ),
                                   ),
                                   10.o.gapx,
@@ -175,6 +175,7 @@ class _CartScreenState extends State<CartScreen> {
                                         onTap: () {
                                           setState(() {
                                             count++;
+                                            pref.setInt("food", count);
                                           });
                                         },
                                         child: Container(
