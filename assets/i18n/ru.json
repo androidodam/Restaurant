@@ -60,7 +60,8 @@
         "RATING": "Рейтинг",
         "ORDERCOUNT": "Заказов",
         "DETAILDES": "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum. Chicken Tomatoa Lettuse Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum. Chicken Tomatoa Lettuse Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt.",
-        "ADDCART": "Добавить в корзину"
+        "ADDCART": "Добавить в корзину",
+        "GOTOCART": "Перейти в корзину"
     },
     "CART": {
         "ORDERDETAILS": "Детали заказа",

@@ -60,7 +60,8 @@
         "RATING": "Rating",
         "ORDERCOUNT": "Order",
         "DETAILDES": "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum. Chicken Tomatoa Lettuse Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum. Chicken Tomatoa Lettuse Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt.",
-        "ADDCART": "Add to Cart"
+        "ADDCART": "Add to Cart",
+        "GOTOCART": "Go to Cart"
     },
     "CART": {
         "ORDERDETAILS": "Order details",

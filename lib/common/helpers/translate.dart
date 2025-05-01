@@ -62,6 +62,7 @@ String rating = 'DETAIL.RATING';
 String orderCount = 'DETAIL.ORDERCOUNT';
 String detailDes = 'DETAIL.DETAILDES';
 String addCart = 'DETAIL.ADDCART';
+String gotoCart = 'DETAIL.GOTOCART';
 
 String orderDetails = 'CART.ORDERDETAILS';
 String total = 'CART.TOTAL';

@@ -14,6 +14,13 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  int count = 0;
+  @override
+  void initState() {
+    count = pref.getInt("food") ?? 0;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeData tema = Theme.of(context);
@@ -37,20 +44,42 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             image: AssetImage(Assets.image.burger_detail),
                             fit: BoxFit.cover),
                       ),
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: Container(
-                          margin: EdgeInsets.only(top: 24, right: 24),
-                          padding: EdgeInsets.all(8),
-                          width: 36.w,
-                          height: 36.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18.o),
-                            color: theme.grey,
-                          ),
-                          child: SvgPicture.asset(
-                            Assets.icon.heart,
-                          ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                pop(context);
+                              },
+                              child: Container(
+                                width: 36.w,
+                                height: 36.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(18.o),
+                                  color: theme.grey,
+                                ),
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color: theme.black,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              width: 36.w,
+                              height: 36.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18.o),
+                                color: theme.grey,
+                              ),
+                              child: SvgPicture.asset(
+                                Assets.icon.heart,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -114,7 +143,96 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
             ),
             (pref.getInt("food") ?? 0) != 0
-                ? Container()
+                ? Positioned(
+                    bottom: 20,
+                    left: 20,
+                    right: 20,
+                    child: Container(
+                      color: theme.tr,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              color: theme.tr,
+                              child: CustomButton(
+                                title: gotoCart.tr,
+                                onTap: () {
+                                  //Cart screen ga o'tishi kerak
+                                },
+                                status: CustomButtonStatus.ELEVETED,
+                              ),
+                            ),
+                          ),
+                          20.o.gapx,
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Color(0xff142737),
+                            ),
+                            padding: EdgeInsets.all(8),
+                            child: Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    if (count >= 1) {
+                                      setState(() {
+                                        count--;
+                                        if (count == 0) {
+                                          pref.setInt("food", 0);
+                                        }
+                                      });
+                                    }
+                                  },
+                                  child: Container(
+                                    width: 30.w,
+                                    height: 30.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: theme.grey,
+                                    ),
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: theme.green,
+                                    ),
+                                  ),
+                                ),
+                                10.o.gapx,
+                                Text(
+                                  "${count}",
+                                  style: theme.testStyle.copyWith(
+                                    color: theme.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                10.o.gapx,
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      count++;
+                                      pref.setInt("food", count);
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 30.w,
+                                    height: 30.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: theme.green,
+                                    ),
+                                    child: Icon(
+                                      Icons.add,
+                                      color: theme.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                 : Positioned(
                     bottom: 20,
                     left: 20,
@@ -126,8 +244,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         onTap: () {
                           setState(() {
                             pref.setInt("food", 1);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(addCartItem.tr)));
+                            count = 1;
                           });
                         },
                         status: CustomButtonStatus.ELEVETED,
